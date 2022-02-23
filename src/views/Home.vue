@@ -1,106 +1,116 @@
-<!--
- * @Author: zeHua
- * @Date: 2021-12-09 09:47:36
- * @LastEditors: zeHua
- * @LastEditTime: 2021-12-14 17:08:07
- * @FilePath: /yd-npm-components/rope-ui/examples/views/Home.vue
--->
 <template>
-  <div class="home">
-      <BasicTable
-      :registerTable="table1"
-      :data="dataList"
-      :basicTableOptions="options"
-      :basicTableData.sync="getBasicTable"
-      title="基础示例"
-    >
-    </BasicTable>
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    
-  </div>
+      <basic-form
+        :schema="basicForm"
+        @handleSubmit="handleSubmit"
+        :span="8"
+        ref="form"
+        :formModel.sync="formModel"
+        :schemaAttr.sync="schemaAttr"
+      >
+      </basic-form>
 </template>
 
 <script>
-// import { customTag } from 'rope-ui/dist/index'
-export default {
- 
-  data() {
+  export default {
+  name:'Basic',
+   data() {
     return {
-      demoStr: '',
-      getBasicTable: {},
-      dataList:[{
-          date: '2016-05-02',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333,
-          tag: '家'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1517 弄',
-          zip: 200333,
-          tag: '公司'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1519 弄',
-          zip: 200333,
-          tag: '家'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1516 弄',
-          zip: 200333,
-          tag: '公司'
-        }],
-      options: {
-        apiFormat: 'data.items',
-        apiParams: { a: 1, b: 2 },
-        paginationFormat: 'data.total',
+      formModel: {
+        field6: 2,
+        field1: 22,
       },
-      // table 索引
-      table1: [
+      schemaAttr: [],
+      activeNames: "1",
+      formsss: {},
+      num: "",
+      basicForm: [
         {
-          label: 'id',
-          value: 'date',
-          width: 150,
-          sortable: true,
-        },
-        {
-          label: '管理员账号',
-          value: 'name',
-          'show-overflow-tooltip': true,
-          width: 200,
-         
-        },
-        {
-          label: 'title',
-          value: 'address',
-          'show-overflow-tooltip': true,
-          width: 200,
-        },
-        {
-          label: '用户状态',
-          value: 'status',
-          options: [
-            {
-              label: '删除',
-              value: 'deleted',
+          field: "field1",
+          colProps: {
+            // span: 12,
+            // formSpan: 18,
+          },
+
+          label: "字段1",
+          type: "textarea",
+          rows:'1',
+          isVisible:false,
+          // style: {
+          //   width: "100px",
+          // },
+          componentProps: {
+            onChange: (e) => {
+              console.log(e);
+              // console.log(1232);
+              // if (e) {
+              //   this.basicForm[4].componentProps.options = [
+              //     { pageviews: 1, id: 2 },
+              //   ];
+              // }
             },
-            { label: '发表', value: 'published' },
-          ],
+          },
+          component: "Input",
+          placeholder: "字段1",
+        },
+
+        {
+          field: "field2",
+          label: "带后缀",
+          inputRulesType: "number",
+          component: "Input",
+          placeholder: "字段2",
+          suffix: "天",
+        },
+        {
+          field: "field5",
+          label: "字段5",
+          component: "Select",
+          componentProps: {
+            options: [
+              {
+                label: "选项1",
+                value: 1,
+              },
+              {
+                label: "选项2",
+                value: 2,
+              },
+            ],
+          },
+        },
+        {
+          field: "field8",
+          label: "字段8",
+          component: "Select",
+          componentProps: {
+            options: [
+              {
+                label: "选项1",
+                value: 1,
+              },
+              {
+                label: "选项2",
+                value: 2,
+              },
+            ],
+          },
+        },
+        {
+          field: "field10",
+          label: "字段7",
+          component: "Rate",
+        },
+      
+        {
+          slot: "tree",
         },
       ],
     };
   },
-}
+  methods:{
+      handleSubmit(val){
+          console.log(val)
+      }
+  }
+  }
 </script>

@@ -2,13 +2,13 @@
  * @Author: zeHua
  * @Date: 2021-07-02 15:09:51
  * @LastEditors: zeHua
- * @LastEditTime: 2021-12-22 11:47:37
- * @FilePath: /yd-admin/src/components/Table/components/index.vue
+ * @LastEditTime: 2022-02-23 16:17:21
+ * @FilePath: /cccc/rope-ui-npm/packages/Table/components/index.vue
 -->
 <template>
   <div class="base-table">
     <div class="base-table__form" v-if="formSchema.length > 0">
-      <BasiceForm
+      <BasicForm
         :schema="formSchema"
         :label-width="130"
         @handleKeyEnter="handleQuery(form)"
@@ -22,7 +22,7 @@
             <slot :name="item.slot"></slot>
           </template>
         </template>
-      </BasiceForm>
+      </BasicForm>
     </div>
 
     <div class="base-table-wrapper">
@@ -99,11 +99,11 @@
 
 <script>
 // import { downloadExcel } from "./excel.js";
-import { BasiceForm } from "../../Form/index.js";
+import { BasicForm } from "../../Form/index.js";
 import tableColumn from "./tableColumn.vue";
 export default {
   components: {
-    BasiceForm,
+    BasicForm,
     tableColumn,
   },
   data() {
@@ -111,6 +111,7 @@ export default {
       form: {}, //form 表单
       formVisible: false, //
       tableData: [],
+      methods:'',
       tableLoading: false,
       // 分页
       paginationConfig: {
@@ -183,6 +184,7 @@ export default {
   mounted() {
     this.handleQuery();
     this.changeFormVisible();
+    this.methods=this.$refs.table;
   },
   methods: {
     handleStopFoucs(e) {
@@ -263,7 +265,8 @@ export default {
         });
       }
       this.tableLoading = false;
-
+      // 添加查询反馈参数
+      this.$emit('handleTableQuery',form)
     },
     // 重置
     handleFormReset(form) {

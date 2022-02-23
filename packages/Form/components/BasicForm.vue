@@ -41,7 +41,7 @@
               :label="item.label"
               class="wintao-form-item"
               :prop="item.field"
-              :style="item.colProps&&item.colProps.style"
+              :style="item.colProps && item.colProps.style"
               v-if="!item.slot"
               :rules="
                 item.isVisible
@@ -73,8 +73,16 @@
     </el-form>
     <slot name="footer">
       <div class="antd-form__footer">
-        <el-button icon="el-icon-refresh" size="mini" @click="reset('form')" >重置</el-button>
-        <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleSubmit()">搜索</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="reset('form')"
+          >重置</el-button
+        >
+        <el-button
+          type="cyan"
+          icon="el-icon-search"
+          size="mini"
+          @click="handleSubmit()"
+          >搜索</el-button
+        >
         <!-- <el-button @click="reset('form')" size="small">重 置</el-button>
         <el-button type="primary" @click="handleSubmit()" size="small"
           >查 询</el-button
@@ -115,7 +123,7 @@ export default {
       formVisible: false,
       //form参数
       params: {},
-      methods:{},
+      methods: {},
       // 暴露出去的方法
     };
   },
@@ -402,7 +410,7 @@ export default {
   },
   mounted() {
     this.formValue();
-    this.methods=this.$refs.form;
+    this.methods = this.$refs.form;
   },
 };
 </script>
@@ -415,14 +423,12 @@ export default {
 }
 .antd-form {
   overflow: hidden;
-  .wintao-form-item{
-  //   display: flex;
-  // align-items: center;
-      .el-form-item__content{
-        // flex:1;
-        display: flex;
-       align-items: center;
-      }
+  .wintao-form-item {
+   /deep/ .el-form-item__content {
+      display: flex;
+      align-items: center;
+      min-height: 32px;
+    }
   }
   .el-col {
     // height: 58px;
@@ -446,26 +452,26 @@ export default {
 /* button color */
 .el-button--cyan.is-active,
 .el-button--cyan:active {
-  background: #20B2AA;
-  border-color: #20B2AA;
-  color: #FFFFFF;
+  background: #20b2aa;
+  border-color: #20b2aa;
+  color: #ffffff;
 }
 
 .el-button--cyan:focus,
 .el-button--cyan:hover {
-  background: #48D1CC;
-  border-color: #48D1CC;
-  color: #FFFFFF;
+  background: #48d1cc;
+  border-color: #48d1cc;
+  color: #ffffff;
 }
 
 .el-button--cyan {
-  background-color: #20B2AA;
-  border-color: #20B2AA;
-  color: #FFFFFF;
+  background-color: #20b2aa;
+  border-color: #20b2aa;
+  color: #ffffff;
 }
 
 /* text color */
 .text-navy {
-	color: #1ab394;
+  color: #1ab394;
 }
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "rope-ui",
-  "version": "0.3.7",
+  "version": "0.3.10",
   "description": "rope-ui is yd",
   "main": "lib/rope-ui.umd.min.js",
   
